@@ -1,0 +1,18 @@
+# 开发文档
+PRD.md
+DEV_REPORT.md
+*.log
+
+# 测试文件
+test*.html
+__tests__/
+*.test.*
+
+# 系统文件
+.DS_Store
+Thumbs.db
+
+# Skill 相关
+.claude/
+
+# 其他项目文件
