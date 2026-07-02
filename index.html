@@ -2879,8 +2879,24 @@
 
     @media (max-width: 720px) {
       .shell {
-        padding: 10px;
-        gap: 10px;
+        padding: 8px;
+        gap: 8px;
+      }
+
+      .scoreboard {
+        border-radius: 14px;
+      }
+
+      .scoreboard-top {
+        padding: 6px 10px 4px;
+      }
+
+      .scoreboard-top strong {
+        font-size: 14px;
+      }
+
+      .scoreboard-top span {
+        font-size: 11px;
       }
 
       .metrics {
@@ -2888,16 +2904,29 @@
       }
 
       .metric {
-        padding: 8px 6px;
+        padding: 5px 4px;
       }
 
       .metric-value {
-        font-size: 18px;
+        font-size: 14px;
+      }
+
+      .metric-label {
+        font-size: 10px;
+        margin-top: 1px;
       }
 
       .main {
         grid-template-columns: 1fr;
-        grid-template-rows: minmax(0, 1fr) clamp(300px, 42dvh, 390px);
+        grid-template-rows: auto 1fr;
+      }
+
+      .panel.hero {
+        min-height: 60px;
+      }
+
+      .panel.content {
+        min-height: 300px;
       }
 
       .hero-head {
@@ -6563,6 +6592,15 @@
       const frame = panelBody?.querySelector(".panel-scale-frame");
       const inner = panelBody?.querySelector(".panel-scale-inner");
       if (!panelBody || !frame || !inner) return;
+
+      /* mobile: native size, no scale transform */
+      if (window.innerWidth <= 720) {
+        panelBody.style.setProperty("--panel-scale", "1");
+        panelBody.dataset.scaleActive = "false";
+        panelBody.dataset.scaleTier = "normal";
+        inner.style.width = "100%";
+        return;
+      }
 
       const measurePanelScale = () => {
         const frameRect = frame.getBoundingClientRect();
