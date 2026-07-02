@@ -259,23 +259,6 @@
       color: #ffb2a6;
     }
 
-    .objective-actions {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      margin-top: 10px;
-    }
-
-    .hero-inline-btn {
-      min-height: 38px;
-      padding: 8px 12px;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(255, 255, 255, 0.06);
-      color: #fff0c5;
-      cursor: pointer;
-    }
-
     .ticker p + p {
       margin-top: 8px;
       color: var(--muted);
@@ -341,10 +324,6 @@
       transform-origin: top left;
       transform: scale(var(--panel-scale, 1));
       will-change: transform;
-    }
-
-    .mobile-summary-card {
-      display: none;
     }
 
     .content[data-view="intro"] .panel-head small,
@@ -2424,65 +2403,6 @@
       image-rendering: pixelated;
     }
 
-    .video-match-stage[data-video-state="loading"]::before {
-      content: "比赛演出加载中";
-      position: absolute;
-      left: 12px;
-      bottom: 12px;
-      z-index: 2;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 12px;
-      color: #fff0c4;
-      background: rgba(6, 10, 18, 0.62);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(8px);
-    }
-
-    .match-stage-fallback {
-      display: grid;
-      gap: 8px;
-      align-content: start;
-    }
-
-    .match-stage-note {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 8px 10px;
-      border-radius: 12px;
-      background: rgba(255, 209, 110, 0.08);
-      border: 1px solid rgba(255, 209, 110, 0.18);
-      color: #ffe9b4;
-      font-size: 12px;
-      line-height: 1.45;
-    }
-
-    .match-stage-poster {
-      position: relative;
-      overflow: hidden;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(9, 15, 26, 0.8);
-    }
-
-    .match-stage-poster img {
-      display: block;
-      width: 100%;
-      aspect-ratio: 16 / 8.1;
-      object-fit: cover;
-    }
-
-    .match-stage-poster::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background:
-        linear-gradient(180deg, rgba(5, 7, 12, 0.12), rgba(5, 7, 12, 0.36)),
-        radial-gradient(circle at center, transparent 48%, rgba(3, 5, 9, 0.32) 100%);
-      pointer-events: none;
-    }
-
     .live-scoreline {
       display: flex;
       justify-content: space-between;
@@ -2549,30 +2469,6 @@
       overflow: hidden;
       font-size: 13px;
       line-height: 1.45;
-    }
-
-    .live-coach-notes {
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(255, 255, 255, 0.04);
-      padding: 10px 12px;
-    }
-
-    .live-coach-notes summary {
-      cursor: pointer;
-      list-style: none;
-      color: #fff0c5;
-      font-weight: 700;
-    }
-
-    .live-coach-notes summary::-webkit-details-marker {
-      display: none;
-    }
-
-    .live-coach-notes .bullet-list {
-      margin-top: 10px;
-      font-size: 13px;
-      gap: 6px;
     }
 
     .sticky-actions {
@@ -2982,22 +2878,105 @@
     }
 
     @media (max-width: 720px) {
-      .panel-body {
+      .shell {
         padding: 10px;
-        overflow: hidden;
+        gap: 10px;
       }
 
-      .panel-scale-frame {
-        overflow-y: auto;
-        overflow-x: hidden;
-        -webkit-overflow-scrolling: touch;
-        padding-right: 1px;
+      .metrics {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
-      .panel-scale-inner {
-        transform: none;
-        width: 100% !important;
-        will-change: auto;
+      .metric {
+        padding: 8px 6px;
+      }
+
+      .metric-value {
+        font-size: 18px;
+      }
+
+      .main {
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(0, 1fr) clamp(300px, 42dvh, 390px);
+      }
+
+      .hero-head {
+        padding: 14px 14px 8px;
+      }
+
+      .hero-topline {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .hero-tools {
+        justify-content: flex-start;
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
+      }
+
+      .hero-body {
+        padding: 10px 14px 14px;
+      }
+
+      .panel-head {
+        padding: 12px 14px;
+      }
+
+      .panel-body {
+        padding: 12px;
+        overflow: auto;
+      }
+
+      .step-track {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .two-col,
+      .three-col,
+      .setup-grid,
+      .compact-options,
+      .compact-options.four,
+      .result-layout,
+      .setup-summary,
+      .lead-split,
+      .coach-grid,
+      .sponsor-grid,
+      .live-layout,
+      .round-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .shop-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .shop-banner-head,
+      .shop-shelf-head,
+      .shop-shelf-footer {
+        grid-template-columns: 1fr;
+        display: grid;
+      }
+
+      .shop-banner-actions .btn,
+      .shop-shelf-card .btn {
+        width: 100%;
+      }
+
+
+      .coach-header {
+        grid-template-columns: 1fr;
+      }
+
+      .lead-card h3,
+      .live-title {
+        font-size: 22px;
       }
 
       .sticky-actions {
@@ -3018,7 +2997,6 @@
       .btn {
         min-height: 50px;
         padding: 13px 16px;
-        font-size: 16px;
       }
 
       .card-actions {
@@ -3051,304 +3029,6 @@
       .drawer-panel.open {
         transform: translateY(0);
       }
-    }
-
-    #app[data-phone-mode="true"] .rotate-guard {
-      display: none !important;
-    }
-
-    #app[data-phone-mode="true"] .shell {
-      padding: 6px;
-      gap: 6px;
-      height: 100%;
-    }
-
-    #app[data-phone-mode="true"] .scoreboard-top {
-      padding: 8px 10px 6px;
-    }
-
-    #app[data-phone-mode="true"] .scoreboard-top strong {
-      font-size: 16px;
-    }
-
-    #app[data-phone-mode="true"] .scoreboard-top span,
-    #app[data-phone-mode="true"] .small {
-      font-size: 13px;
-    }
-
-    #app[data-phone-mode="true"] .metrics {
-      grid-template-columns: repeat(7, minmax(64px, 1fr));
-    }
-
-    #app[data-phone-mode="true"] .metric {
-      padding: 8px 4px;
-      min-width: 0;
-    }
-
-    #app[data-phone-mode="true"] .metric-value {
-      font-size: 18px;
-    }
-
-    #app[data-phone-mode="true"] .metric-label {
-      font-size: 12px;
-    }
-
-    #app[data-phone-mode="true"] .main {
-      grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1.22fr);
-      gap: 8px;
-      min-height: 0;
-    }
-
-    #app[data-phone-mode="true"] .hero,
-    #app[data-phone-mode="true"] .content {
-      min-width: 0;
-    }
-
-    #app[data-phone-mode="true"] .hero {
-      overflow: hidden;
-    }
-
-    #app[data-phone-mode="true"] .hero-head {
-      gap: 6px;
-      padding: 10px 10px 6px;
-    }
-
-    #app[data-phone-mode="true"] .phase-chip {
-      min-height: 32px;
-      padding: 6px 10px;
-      font-size: 12px;
-    }
-
-    #app[data-phone-mode="true"] .hero-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      justify-content: flex-end;
-    }
-
-    #app[data-phone-mode="true"] .view-toggle {
-      min-width: 68px;
-      min-height: 32px;
-      padding: 6px 10px;
-      font-size: 12px;
-    }
-
-    #app[data-phone-mode="true"] .hero-title {
-      font-size: 28px;
-      line-height: 1.1;
-    }
-
-    #app[data-phone-mode="true"] .hero-subtitle {
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    #app[data-phone-mode="true"] .hero-body {
-      margin-top: auto;
-      padding: 8px 10px 10px;
-      overflow-y: auto;
-      overflow-x: hidden;
-      min-height: 0;
-      align-content: start;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    #app[data-phone-mode="true"] .objective,
-    #app[data-phone-mode="true"] .warning-box {
-      padding: 10px;
-    }
-
-    #app[data-phone-mode="true"] .objective p,
-    #app[data-phone-mode="true"] .warning-box p {
-      font-size: 13px;
-      line-height: 1.5;
-    }
-
-    #app[data-phone-mode="true"] .box-title {
-      font-size: 12px;
-    }
-
-    #app[data-phone-mode="true"] .panel-head {
-      padding: 10px 12px;
-    }
-
-    #app[data-phone-mode="true"] .panel-head h2 {
-      font-size: 17px;
-    }
-
-    #app[data-phone-mode="true"] .panel-head small {
-      font-size: 12px;
-    }
-
-    #app[data-phone-mode="true"] .panel-body {
-      padding: 8px;
-      overflow: hidden;
-    }
-
-    #app[data-phone-mode="true"] .panel-scale-frame {
-      overflow: hidden;
-    }
-
-    #app[data-phone-mode="true"] .panel-scale-inner {
-      width: 100%;
-    }
-
-    #app[data-phone-mode="true"] .lead-card h3,
-    #app[data-phone-mode="true"] .live-title {
-      font-size: 22px;
-      line-height: 1.16;
-    }
-
-    #app[data-phone-mode="true"] .lead-card p,
-    #app[data-phone-mode="true"] .choice-card p,
-    #app[data-phone-mode="true"] .selection-card p,
-    #app[data-phone-mode="true"] .info-card p,
-    #app[data-phone-mode="true"] .result-card p,
-    #app[data-phone-mode="true"] .focus-card .feed-note,
-    #app[data-phone-mode="true"] .live-copy {
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
-    #app[data-phone-mode="true"] .step-head {
-      gap: 8px;
-      padding: 10px;
-    }
-
-    #app[data-phone-mode="true"] .step-kicker {
-      font-size: 12px;
-    }
-
-    #app[data-phone-mode="true"] .step-head strong {
-      font-size: 16px;
-    }
-
-    #app[data-phone-mode="true"] .step-head p,
-    #app[data-phone-mode="true"] .content[data-view="coach"] .step-head p,
-    #app[data-phone-mode="true"] .content[data-view="sponsor"] .step-head p,
-    #app[data-phone-mode="true"] .content[data-view="round"] .step-head p {
-      font-size: 13px;
-      line-height: 1.45;
-    }
-
-    #app[data-phone-mode="true"] .step-track {
-      display: grid;
-      grid-template-columns: repeat(var(--step-count, 3), minmax(0, 1fr));
-      gap: 6px;
-    }
-
-    #app[data-phone-mode="true"] .step-pill,
-    #app[data-phone-mode="true"] .panel-body[data-view="round"] .step-pill {
-      min-width: 0;
-      max-width: none;
-      padding: 7px 8px;
-      font-size: 12px;
-      line-height: 1.3;
-      white-space: normal;
-      text-overflow: clip;
-    }
-
-    #app[data-phone-mode="true"] .lead-split {
-      grid-template-columns: minmax(0, 1.02fr) minmax(180px, 0.98fr);
-    }
-
-    #app[data-phone-mode="true"] .shop-banner-actions .btn,
-    #app[data-phone-mode="true"] .shop-shelf-card .btn {
-      width: 100%;
-    }
-
-    #app[data-phone-mode="true"] .coach-header {
-      grid-template-columns: 92px minmax(0, 1fr);
-    }
-
-    #app[data-phone-mode="true"] .coach-mini-intro {
-      grid-template-columns: 64px minmax(0, 1fr);
-    }
-
-    #app[data-phone-mode="true"] .coach-mini-intro img {
-      width: 64px;
-      height: 64px;
-    }
-
-    #app[data-phone-mode="true"] .strategy-card,
-    #app[data-phone-mode="true"] .choice-card,
-    #app[data-phone-mode="true"] .info-card,
-    #app[data-phone-mode="true"] .result-card,
-    #app[data-phone-mode="true"] .selection-card {
-      padding: 14px;
-    }
-
-    #app[data-phone-mode="true"] .btn {
-      min-height: 46px;
-      padding: 12px 14px;
-      font-size: 15px;
-    }
-
-    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-layout {
-      grid-template-columns: minmax(0, 1.04fr) minmax(240px, 0.96fr);
-      gap: 10px;
-    }
-
-    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-choice-card,
-    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-side {
-      padding: 12px;
-    }
-
-    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .match-stage-video,
-    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .match-stage-canvas,
-    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .match-stage-poster img {
-      aspect-ratio: 16 / 9;
-    }
-
-    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-action-btn {
-      padding: 12px 10px;
-    }
-
-    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-action-btn strong {
-      font-size: 15px;
-    }
-
-    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-action-btn span {
-      font-size: 12px;
-      line-height: 1.4;
-    }
-
-    #app[data-phone-mode="true"] .drawer-panel {
-      width: min(480px, 78vw);
-      height: calc(100% - 24px);
-      top: 12px;
-      right: 12px;
-      left: auto;
-      bottom: auto;
-      border-radius: 20px;
-      transform: translateX(calc(100% + 24px));
-    }
-
-    #app[data-phone-mode="true"] .drawer-panel.open {
-      transform: translateX(0);
-    }
-
-    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .metric-value {
-      font-size: 16px;
-    }
-
-    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .hero-title {
-      font-size: 24px;
-    }
-
-    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .hero-subtitle {
-      font-size: 12px;
-    }
-
-    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .step-pill,
-    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .panel-body[data-view="round"] .step-pill {
-      font-size: 12px;
-      padding: 6px 8px;
-    }
-
-    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .btn {
-      min-height: 42px;
-      font-size: 14px;
     }
   </style>
 </head>
@@ -3491,11 +3171,11 @@
       propUsb: "./assets/props/prop_overseas_usb.jpg",
       propNote: "./assets/props/prop_penalty_note.jpg",
       portraitCoach: "./assets/portraits/portrait_coach.jpg",
-      videoScramble: "./视频/corner_scramble.mp4",
-      videoFinish: "./视频/solo_finish.mp4",
-      videoCounter: "./视频/counter_attack.mp4",
-      videoDribble: "./视频/dribble_carry.mp4",
-      videoRescue: "./视频/rescue_tackle.mp4"
+      videoScramble: "./视频/中国队与某个国家队比赛，禁区内多人抢点混战，前锋与后卫空中争顶，门将出击扑救，足球落地弹起在人堆中穿行，镜头紧贴门前混战.mp4",
+      videoFinish: "./视频/中国队前锋单刀带球进入禁区，门将出击封堵，前锋低射.mp4",
+      videoCounter: "./视频/中场拼抢后中国队断球成功，持球人立即向前推进，队友前插，对方后卫回追。镜头跟随反击路线。.mp4",
+      videoDribble: "./视频/夜间球场，电视转播镜头。中国队前锋带球推进，足球始终在脚下滚动，两名防守球员上抢拦截。.mp4",
+      videoRescue: "./视频/对方前锋带球突入禁区，中国队后卫从侧后方滑铲解围，足球贴地滚向边线。镜头跟随进攻球员后快速切到解围动作。.mp4"
     };
 
     const MATCH_VIDEO_LIBRARY = {
@@ -4344,38 +4024,6 @@
       return Math.max(min, Math.min(max, value));
     }
 
-    function isPhoneViewport() {
-      return window.matchMedia("(pointer: coarse)").matches && Math.min(window.innerWidth, window.innerHeight) <= 900;
-    }
-
-    function isPhonePortraitViewport() {
-      return isPhoneViewport() && window.innerHeight > window.innerWidth;
-    }
-
-    function isMobileViewport() {
-      return isPhoneViewport();
-    }
-
-    function isMobilePortraitViewport() {
-      return false;
-    }
-
-    function isMobileLandscapeViewport() {
-      return isPhoneViewport();
-    }
-
-    function syncPhoneViewportMode() {
-      const app = $("#app");
-      if (!app) return;
-      const phoneMode = isPhoneViewport();
-      app.dataset.phoneMode = phoneMode ? "true" : "false";
-      app.dataset.phoneOrientation = phoneMode && isPhonePortraitViewport() ? "portrait" : "landscape";
-      const landscapeHeight = phoneMode
-        ? (isPhonePortraitViewport() ? window.innerWidth : window.innerHeight)
-        : window.innerHeight;
-      app.dataset.phoneHeightTier = phoneMode && landscapeHeight < 460 ? "compact" : "normal";
-    }
-
     function trackFeedbackEvent(event, metadata = {}) {
       try {
         window.Feedback?.trackEvent({ event, metadata });
@@ -5166,32 +4814,6 @@
       };
     }
 
-    function getMobileHeroSubtitle(meta) {
-      if (state.phase === "intro" || state.phase === "coach" || state.phase === "sponsor") {
-        return "世界杯激战正酣，电话却先打到了你这里。先把第一步决定做完，别让锅还没接稳就先掉地上。";
-      }
-      if (state.phase === "qualifiers") {
-        return "预选赛先看目标，再看对手，别把命交给计算器和最后一轮的别人。";
-      }
-      if (state.phase === "worldcup") {
-        return state.view === "wc-draw"
-          ? "签位已经落地，先判断出线线，再准备第一场。"
-          : "世界杯已经开始，这一页只保留你现在最该关心的信息。";
-      }
-      if (state.phase === "knockout") {
-        return "淘汰赛没有回头路，先处理眼前这一战，其他都往后放。";
-      }
-      return meta.subtitle;
-    }
-
-    function getMatchStagePoster(scene) {
-      if (scene === "corner") return ASSETS.match;
-      if (scene === "counter") return ASSETS.worldCupGroup;
-      if (scene === "dribble") return ASSETS.match;
-      if (scene === "rescue") return ASSETS.knockoutR32;
-      return ASSETS.match;
-    }
-
     function renderMetrics() {
       const metrics = [
         ["积分", state.resources?.points ?? 0, "决定排名，赢 3 分平 1 分。"],
@@ -5237,19 +4859,13 @@
       $("#progressLabel").textContent = progressText;
       $("#heroChip").textContent = meta.chip;
       $("#heroTitle").textContent = meta.title;
-      $("#heroSubtitle").textContent = isMobilePortraitViewport() ? getMobileHeroSubtitle(meta) : meta.subtitle;
+      $("#heroSubtitle").textContent = meta.subtitle;
 
       const objective = getRoundObjective();
       $("#objectiveBox").innerHTML = `
         <div class="box-title">当前目标</div>
         <p><strong>${objective.title}</strong></p>
         <p style="margin-top:8px;">${objective.text}</p>
-        ${isMobilePortraitViewport() ? `
-          <div class="objective-actions">
-            <button class="hero-inline-btn" data-action="open-drawer" data-tab="guide">查看说明</button>
-            <button class="hero-inline-btn" data-action="open-drawer" data-tab="news">看风向</button>
-          </div>
-        ` : ""}
       `;
 
       const warnings = getWarnings();
@@ -5419,28 +5035,6 @@
     }
 
     function renderIntro() {
-      if (isMobilePortraitViewport()) {
-        return `
-          <div class="lead-card result-card">
-            <div class="lead-kicker">世界杯转播夜 / 上任电话</div>
-            <h3>世界杯打得正热，电话却先狠狠干到了你这里。</h3>
-            <div class="info-card compact-card">
-              <p>你正看着别人踢世界杯，手机突然响了。对面通知你接任中国男足主教练，目标是 ${state.currentYear} 世界杯。你问为什么是你，对面说得很坦然：因为前面已经有 167 个人拒绝了。</p>
-            </div>
-            <div class="lead-side">
-              <strong>你现在最需要知道的：</strong>
-              <div class="bullet-list">
-                <div>先定主教练风格，再定赞助路线</div>
-                <div>这支队伍还没开踢，外界已经准备好先骂再看</div>
-                <div>你的第一步不是赢球，是别把第一步走乱</div>
-              </div>
-            </div>
-            <div class="sticky-actions">
-              <button class="btn" data-action="start">接锅上任</button>
-            </div>
-          </div>
-        `;
-      }
       return `
         <div class="lead-card result-card">
           <div class="lead-kicker">世界杯转播夜 / 上任电话</div>
@@ -5846,79 +5440,11 @@
             muted
             loop
             playsinline
-            webkit-playsinline
-            x5-playsinline
-            x5-video-player-type="h5"
-            x5-video-player-fullscreen="false"
-            disablepictureinpicture
-            preload="metadata"
-            poster="${getMatchStagePoster(meta.scene)}"
-            data-role="match-video"
-            data-scene="${meta.scene}"
+            preload="auto"
             aria-label="比赛演出视频"
           ></video>
-          <div class="match-stage-fallback" data-role="video-fallback" hidden>
-            <div class="match-stage-note">当前网络或浏览器限制了视频自动播放，已切换为兜底演出。</div>
-            <div class="match-stage-poster">
-              <img src="${getMatchStagePoster(meta.scene)}" alt="比赛演出备用画面">
-            </div>
-            <canvas id="matchCanvasStage" class="match-stage-canvas" aria-label="比赛演出画面"></canvas>
-          </div>
         </div>
       `;
-    }
-
-    function activateMatchVideoStage() {
-      const stage = $(".video-match-stage");
-      if (!stage) return;
-      const video = stage.querySelector("[data-role='match-video']");
-      const fallback = stage.querySelector("[data-role='video-fallback']");
-      if (!video || !fallback) return;
-
-      let settled = false;
-      let failed = false;
-      stage.dataset.videoState = "loading";
-
-      const showFallback = (reason) => {
-        if (failed) return;
-        failed = true;
-        stage.dataset.videoState = "fallback";
-        video.pause();
-        video.hidden = true;
-        fallback.hidden = false;
-        fallback.dataset.reason = reason;
-        syncMatchCanvasPrototype();
-      };
-
-      const markPlaying = () => {
-        if (failed) return;
-        settled = true;
-        stage.dataset.videoState = "playing";
-        fallback.hidden = true;
-      };
-
-      const failEvents = ["error", "stalled", "abort", "suspend"];
-      failEvents.forEach((eventName) => {
-        video.addEventListener(eventName, () => showFallback(eventName), { once: true });
-      });
-      video.addEventListener("canplay", () => {
-        if (!failed) {
-          stage.dataset.videoState = "ready";
-        }
-      }, { once: true });
-      video.addEventListener("playing", markPlaying, { once: true });
-
-      const timeoutMs = isMobileViewport() ? 5000 : 3200;
-      window.setTimeout(() => {
-        if (!settled && !failed) {
-          showFallback("timeout");
-        }
-      }, timeoutMs);
-
-      const playPromise = video.play?.();
-      if (playPromise && typeof playPromise.catch === "function") {
-        playPromise.catch(() => showFallback("play"));
-      }
     }
 
     function getMatchSceneDuration(scene) {
@@ -6876,39 +6402,6 @@
           </div>
         `;
       }
-      if (isMobilePortraitViewport()) {
-        return `
-          <div class="live-layout">
-            <div class="live-main">
-              ${renderCanvasMatchStage(step)}
-              <div class="choice-card live-choice-card">
-                <div class="live-meta-row">
-                  <span class="tag">比赛进行中</span>
-                  <span class="live-minute">临场决策 ${state.matchFlow.step + 1} / ${state.matchFlow.prompts.length}</span>
-                </div>
-                <h3 class="live-title">${step.title}</h3>
-                <p class="live-copy">${step.text}</p>
-              </div>
-            </div>
-            <div class="live-side">
-              <div class="live-action-list">
-                ${step.options.map((option, index) => `
-                  <button class="live-action-btn ${index === 1 ? "secondary" : ""}" data-action="match-choice" data-index="${index}">
-                    <strong>${option.label}</strong>
-                    <span>${option.desc}</span>
-                  </button>
-                `).join("")}
-              </div>
-              <details class="live-coach-notes">
-                <summary>展开教练席耳机里的声音</summary>
-                <div class="bullet-list">
-                  ${step.options.map((option) => `<div><strong>${option.label}</strong>：${option.desc}</div>`).join("")}
-                </div>
-              </details>
-            </div>
-          </div>
-        `;
-      }
       return `
         <div class="live-layout">
           <div class="live-main">
@@ -7086,7 +6579,7 @@
 
       panelBody.style.setProperty("--panel-scale", "1");
       panelBody.dataset.scaleActive = "false";
-      panelBody.dataset.scaleTier = isMobileViewport() ? "mobile" : "normal";
+      panelBody.dataset.scaleTier = "normal";
       inner.style.width = "100%";
 
       let safeScale = measurePanelScale();
@@ -7188,7 +6681,6 @@
       renderPanel();
       renderDrawer();
       syncMatchCanvasPrototype();
-      activateMatchVideoStage();
     }
 
     function pickStrategy(id) {
