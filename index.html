@@ -2403,23 +2403,6 @@
       image-rendering: pixelated;
     }
 
-    .video-play-overlay {
-      display: none;
-      position: absolute;
-      inset: 0;
-      z-index: 2;
-      background: rgba(0, 0, 0, 0.35);
-      border: none;
-      cursor: pointer;
-      color: #fff;
-      font-size: 36px;
-      pointer-events: auto;
-    }
-
-    .video-play-overlay:hover {
-      background: rgba(0, 0, 0, 0.5);
-    }
-
     .live-scoreline {
       display: flex;
       justify-content: space-between;
@@ -2895,23 +2878,9 @@
     }
 
     @media (max-width: 720px) {
-      body {
-        overflow: auto;
-      }
-
-      #app {
-        height: auto;
-        min-height: 100dvh;
-        overflow: visible;
-      }
-
       .shell {
         padding: 10px;
         gap: 10px;
-        height: auto;
-        min-height: 100dvh;
-        overflow-y: auto;
-        -webkit-overflow-scrolling: touch;
       }
 
       .metrics {
@@ -2923,30 +2892,12 @@
       }
 
       .metric-value {
-        font-size: 16px;
-      }
-
-      .metric-label {
-        font-size: 11px;
+        font-size: 18px;
       }
 
       .main {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-        overflow: visible;
-      }
-
-      .panel.hero {
-        flex: none;
-        min-height: auto;
-        overflow: visible;
-      }
-
-      .panel.content {
-        flex: none;
-        min-height: auto;
-        overflow: visible;
+        grid-template-columns: 1fr;
+        grid-template-rows: minmax(0, 1fr) clamp(300px, 42dvh, 390px);
       }
 
       .hero-head {
@@ -2963,7 +2914,7 @@
       }
 
       .hero-title {
-        font-size: 22px;
+        font-size: 24px;
       }
 
       .hero-subtitle {
@@ -2980,7 +2931,7 @@
 
       .panel-body {
         padding: 12px;
-        overflow: visible;
+        overflow: auto;
       }
 
       .step-track {
@@ -3044,9 +2995,8 @@
       }
 
       .btn {
-        min-height: 48px;
-        padding: 12px 16px;
-        font-size: 15px;
+        min-height: 50px;
+        padding: 13px 16px;
       }
 
       .card-actions {
@@ -3078,24 +3028,6 @@
 
       .drawer-panel.open {
         transform: translateY(0);
-      }
-
-      .match-stage-video {
-        aspect-ratio: 16 / 9;
-      }
-
-      .match-stage-canvas {
-        aspect-ratio: 16 / 9;
-      }
-
-      .video-play-overlay {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .video-match-stage.playing .video-play-overlay {
-        display: none;
       }
     }
   </style>
@@ -5500,7 +5432,7 @@
         `;
       }
       return `
-        <div class="canvas-match-stage video-match-stage scene-${meta.scene}" data-video-stage>
+        <div class="canvas-match-stage video-match-stage scene-${meta.scene}">
           <video
             class="match-stage-video"
             src="${videoSource}"
@@ -5509,10 +5441,8 @@
             loop
             playsinline
             preload="auto"
-            poster="./assets/match_poster.jpg"
             aria-label="比赛演出视频"
           ></video>
-          <button class="video-play-overlay" aria-label="点击播放比赛视频">▶</button>
         </div>
       `;
     }
@@ -6634,15 +6564,6 @@
       const inner = panelBody?.querySelector(".panel-scale-inner");
       if (!panelBody || !frame || !inner) return;
 
-      /* mobile: native flow layout, no scale transform */
-      if (window.innerWidth <= 720) {
-        panelBody.style.setProperty("--panel-scale", "1");
-        panelBody.dataset.scaleActive = "false";
-        panelBody.dataset.scaleTier = "normal";
-        inner.style.width = "100%";
-        return;
-      }
-
       const measurePanelScale = () => {
         const frameRect = frame.getBoundingClientRect();
         const availableWidth = frameRect.width;
@@ -7283,19 +7204,6 @@
       const target = event.target.closest("[data-action]");
       if (!target) return;
       handleAction(target.dataset.action, target);
-    });
-
-    /* video play overlay — mobile autoplay fallback */
-    document.addEventListener("click", (event) => {
-      const overlay = event.target.closest(".video-play-overlay");
-      if (!overlay) return;
-      event.stopPropagation();
-      const stage = overlay.closest("[data-video-stage]");
-      const video = stage?.querySelector("video");
-      if (!video) return;
-      video.play().then(() => {
-        stage.classList.add("playing");
-      }).catch(() => {});
     });
 
     window.addEventListener("resize", () => {
