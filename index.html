@@ -59,62 +59,6 @@
       pointer-events: none;
     }
 
-    .rotate-guard {
-      display: none;
-      position: absolute;
-      inset: 0;
-      z-index: 10001;
-      align-items: center;
-      justify-content: center;
-      padding: 24px;
-      background:
-        linear-gradient(180deg, rgba(4, 8, 15, 0.72), rgba(4, 8, 15, 0.9)),
-        radial-gradient(circle at top, rgba(255, 220, 130, 0.12), transparent 38%);
-      backdrop-filter: blur(10px);
-    }
-
-    .rotate-card {
-      width: min(100%, 360px);
-      display: grid;
-      gap: 12px;
-      padding: 22px 20px;
-      border-radius: 24px;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: rgba(8, 15, 27, 0.86);
-      box-shadow: var(--shadow);
-      text-align: center;
-    }
-
-    .rotate-icon {
-      font-size: 32px;
-      color: #ffe3a0;
-    }
-
-    .rotate-card h2 {
-      margin: 0;
-      font-size: 24px;
-      line-height: 1.2;
-    }
-
-    .rotate-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    .rotate-hint {
-      display: grid;
-      gap: 8px;
-      padding: 12px 14px;
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: #fff0c5;
-      font-size: 14px;
-      line-height: 1.5;
-    }
-
     .shell {
       position: relative;
       z-index: 1;
@@ -3038,41 +2982,6 @@
     }
 
     @media (max-width: 720px) {
-      .shell {
-        padding: 10px;
-        gap: 10px;
-      }
-
-      .scoreboard-top {
-        padding: 10px 12px 8px;
-      }
-
-      .scoreboard-top strong {
-        font-size: 15px;
-      }
-
-      .scoreboard-top span,
-      .small {
-        font-size: 12px;
-      }
-
-      .metrics {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
-
-      .metric {
-        padding: 10px 6px;
-        min-width: 0;
-      }
-
-      .metric-value {
-        font-size: 18px;
-      }
-
-      .metric-label {
-        font-size: 11px;
-      }
-
       .panel-body {
         padding: 10px;
         overflow: hidden;
@@ -3144,354 +3053,302 @@
       }
     }
 
-    @media (max-width: 720px) and (orientation: portrait) {
-      .rotate-guard {
-        display: flex;
-      }
-
-      .shell {
-        opacity: 0.06;
-        pointer-events: none;
-        user-select: none;
-        filter: blur(6px);
-      }
+    #app[data-phone-mode="true"] .rotate-guard {
+      display: none !important;
     }
 
-    @media (max-width: 720px) and (orientation: landscape) {
-      .shell {
-        padding: 8px;
-        gap: 8px;
-      }
-
-      .scoreboard-top {
-        padding: 8px 12px 6px;
-      }
-
-      .scoreboard-top strong {
-        font-size: 16px;
-      }
-
-      .scoreboard-top span,
-      .small {
-        font-size: 12px;
-      }
-
-      .metrics {
-        grid-template-columns: repeat(7, minmax(54px, 1fr));
-      }
-
-      .metric {
-        padding: 8px 4px;
-      }
-
-      .metric-value {
-        font-size: 19px;
-      }
-
-      .metric-label {
-        font-size: 10px;
-      }
-
-      .main {
-        grid-template-columns: minmax(250px, 0.76fr) minmax(0, 1.24fr);
-        grid-template-rows: minmax(0, 1fr);
-        align-items: stretch;
-      }
-
-      .hero,
-      .content {
-        min-width: 0;
-      }
-
-      .hero {
-        overflow: hidden;
-      }
-
-      .hero-head {
-        gap: 8px;
-        padding: 12px 12px 8px;
-      }
-
-      .hero-topline {
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      .phase-chip {
-        min-height: 36px;
-        padding: 8px 10px;
-        font-size: 12px;
-      }
-
-      .hero-tools {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 8px;
-        justify-content: flex-end;
-      }
-
-      .view-toggle {
-        width: auto;
-        min-width: 74px;
-        min-height: 36px;
-        padding: 7px 11px;
-        font-size: 12px;
-      }
-
-      .hero-title {
-        font-size: 28px;
-        line-height: 1.08;
-      }
-
-      .hero-subtitle {
-        font-size: 14px;
-        line-height: 1.5;
-        display: -webkit-box;
-        -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
-        overflow: hidden;
-      }
-
-      .hero-body {
-        margin-top: 0;
-        padding: 0 12px 12px;
-        overflow-y: auto;
-        overflow-x: hidden;
-        min-height: 0;
-        align-content: start;
-        -webkit-overflow-scrolling: touch;
-      }
-
-      .objective,
-      .warning-box {
-        padding: 12px;
-      }
-
-      .objective p,
-      .warning-box p {
-        font-size: 14px;
-        line-height: 1.5;
-      }
-
-      .box-title {
-        font-size: 12px;
-      }
-
-      .objective-actions {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-      }
-
-      .hero-inline-btn {
-        width: 100%;
-        min-width: 0;
-        min-height: 38px;
-        padding: 8px 10px;
-        font-size: 13px;
-      }
-
-      .panel-head {
-        display: flex;
-      }
-
-      .panel-head h2 {
-        font-size: 18px;
-      }
-
-      .panel-head small {
-        font-size: 12px;
-      }
-
-      .lead-card h3,
-      .live-title {
-        font-size: 24px;
-        line-height: 1.16;
-      }
-
-      .lead-card p,
-      .choice-card p,
-      .selection-card p,
-      .info-card p,
-      .result-card p,
-      .focus-card .feed-note,
-      .live-copy {
-        font-size: 14px;
-        line-height: 1.5;
-      }
-
-      .lead-side strong,
-      .content[data-view="sponsor"] .lead-side strong,
-      .content[data-view="coach"] .lead-side strong,
-      .content[data-view="round"] .lead-side strong {
-        font-size: 15px;
-      }
-
-      .lead-side .bullet-list,
-      .content[data-view="sponsor"] .lead-side .bullet-list,
-      .content[data-view="coach"] .lead-side .bullet-list,
-      .content[data-view="round"] .lead-side .bullet-list {
-        font-size: 13px;
-        line-height: 1.45;
-      }
-
-      .step-head {
-        gap: 8px;
-        padding: 10px;
-      }
-
-      .step-kicker {
-        font-size: 12px;
-      }
-
-      .step-head strong {
-        font-size: 16px;
-      }
-
-      .step-head p,
-      .content[data-view="coach"] .step-head p,
-      .content[data-view="sponsor"] .step-head p,
-      .content[data-view="round"] .step-head p {
-        font-size: 13px;
-        line-height: 1.45;
-      }
-
-      .step-track {
-        display: grid;
-        grid-template-columns: repeat(var(--step-count, 3), minmax(0, 1fr));
-        gap: 6px;
-      }
-
-      .step-pill,
-      .panel-body[data-view="round"] .step-pill {
-        min-width: 0;
-        max-width: none;
-        padding: 8px 9px;
-        font-size: 11.5px;
-        line-height: 1.3;
-        white-space: normal;
-        text-overflow: clip;
-      }
-
-      .lead-split {
-        grid-template-columns: minmax(0, 1.02fr) minmax(200px, 0.98fr);
-      }
-
-      .coach-grid,
-      .sponsor-grid,
-      .strategy-grid,
-      .round-grid,
-      .setup-grid,
-      .result-layout {
-        grid-template-columns: 1fr;
-      }
-
-      .shop-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .shop-banner-head,
-      .shop-shelf-head,
-      .shop-shelf-footer {
-        grid-template-columns: 1fr;
-        display: grid;
-      }
-
-      .shop-banner-actions .btn,
-      .shop-shelf-card .btn {
-        width: 100%;
-      }
-
-      .coach-header {
-        grid-template-columns: 92px minmax(0, 1fr);
-      }
-
-      .coach-mini-intro {
-        grid-template-columns: 64px minmax(0, 1fr);
-      }
-
-      .coach-mini-intro img {
-        width: 64px;
-        height: 64px;
-      }
-
-      .strategy-card,
-      .choice-card,
-      .info-card,
-      .result-card,
-      .selection-card {
-        padding: 14px;
-      }
-
-      .btn {
-        min-height: 46px;
-        padding: 12px 14px;
-        font-size: 15px;
-      }
-
-      .panel-body[data-view="match-choice"] .live-layout {
-        grid-template-columns: minmax(0, 1.02fr) minmax(240px, 0.98fr);
-        gap: 10px;
-      }
-
-      .panel-body[data-view="match-choice"] .live-choice-card,
-      .panel-body[data-view="match-choice"] .live-side {
-        padding: 12px;
-      }
-
-      .panel-body[data-view="match-choice"] .match-stage-video,
-      .panel-body[data-view="match-choice"] .match-stage-canvas,
-      .panel-body[data-view="match-choice"] .match-stage-poster img {
-        aspect-ratio: 16 / 8.2;
-      }
-
-      .panel-body[data-view="match-choice"] .live-action-btn {
-        padding: 12px 10px;
-      }
-
-      .panel-body[data-view="match-choice"] .live-action-btn strong {
-        font-size: 15px;
-      }
-
-      .panel-body[data-view="match-choice"] .live-action-btn span {
-        font-size: 12px;
-        line-height: 1.4;
-      }
+    #app[data-phone-mode="true"] .shell {
+      padding: 6px;
+      gap: 6px;
+      height: 100%;
     }
 
-    @media (max-width: 720px) and (orientation: landscape) and (max-height: 440px) {
-      .scoreboard-top {
-        padding: 7px 10px 5px;
-      }
+    #app[data-phone-mode="true"] .scoreboard-top {
+      padding: 8px 10px 6px;
+    }
 
-      .metric {
-        padding: 7px 4px;
-      }
+    #app[data-phone-mode="true"] .scoreboard-top strong {
+      font-size: 16px;
+    }
 
-      .metric-value {
-        font-size: 17px;
-      }
+    #app[data-phone-mode="true"] .scoreboard-top span,
+    #app[data-phone-mode="true"] .small {
+      font-size: 13px;
+    }
 
-      .hero-title {
-        font-size: 26px;
-      }
+    #app[data-phone-mode="true"] .metrics {
+      grid-template-columns: repeat(7, minmax(64px, 1fr));
+    }
 
-      .hero-subtitle {
-        font-size: 13px;
-      }
+    #app[data-phone-mode="true"] .metric {
+      padding: 8px 4px;
+      min-width: 0;
+    }
 
-      .step-pill,
-      .panel-body[data-view="round"] .step-pill {
-        font-size: 11px;
-        padding: 7px 8px;
-      }
+    #app[data-phone-mode="true"] .metric-value {
+      font-size: 18px;
+    }
 
-      .btn {
-        min-height: 42px;
-        font-size: 14px;
-      }
+    #app[data-phone-mode="true"] .metric-label {
+      font-size: 12px;
+    }
+
+    #app[data-phone-mode="true"] .main {
+      grid-template-columns: minmax(240px, 0.78fr) minmax(0, 1.22fr);
+      gap: 8px;
+      min-height: 0;
+    }
+
+    #app[data-phone-mode="true"] .hero,
+    #app[data-phone-mode="true"] .content {
+      min-width: 0;
+    }
+
+    #app[data-phone-mode="true"] .hero {
+      overflow: hidden;
+    }
+
+    #app[data-phone-mode="true"] .hero-head {
+      gap: 6px;
+      padding: 10px 10px 6px;
+    }
+
+    #app[data-phone-mode="true"] .phase-chip {
+      min-height: 32px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    #app[data-phone-mode="true"] .hero-tools {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: flex-end;
+    }
+
+    #app[data-phone-mode="true"] .view-toggle {
+      min-width: 68px;
+      min-height: 32px;
+      padding: 6px 10px;
+      font-size: 12px;
+    }
+
+    #app[data-phone-mode="true"] .hero-title {
+      font-size: 28px;
+      line-height: 1.1;
+    }
+
+    #app[data-phone-mode="true"] .hero-subtitle {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    #app[data-phone-mode="true"] .hero-body {
+      margin-top: auto;
+      padding: 8px 10px 10px;
+      overflow-y: auto;
+      overflow-x: hidden;
+      min-height: 0;
+      align-content: start;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #app[data-phone-mode="true"] .objective,
+    #app[data-phone-mode="true"] .warning-box {
+      padding: 10px;
+    }
+
+    #app[data-phone-mode="true"] .objective p,
+    #app[data-phone-mode="true"] .warning-box p {
+      font-size: 13px;
+      line-height: 1.5;
+    }
+
+    #app[data-phone-mode="true"] .box-title {
+      font-size: 12px;
+    }
+
+    #app[data-phone-mode="true"] .panel-head {
+      padding: 10px 12px;
+    }
+
+    #app[data-phone-mode="true"] .panel-head h2 {
+      font-size: 17px;
+    }
+
+    #app[data-phone-mode="true"] .panel-head small {
+      font-size: 12px;
+    }
+
+    #app[data-phone-mode="true"] .panel-body {
+      padding: 8px;
+      overflow: hidden;
+    }
+
+    #app[data-phone-mode="true"] .panel-scale-frame {
+      overflow: hidden;
+    }
+
+    #app[data-phone-mode="true"] .panel-scale-inner {
+      width: 100%;
+    }
+
+    #app[data-phone-mode="true"] .lead-card h3,
+    #app[data-phone-mode="true"] .live-title {
+      font-size: 22px;
+      line-height: 1.16;
+    }
+
+    #app[data-phone-mode="true"] .lead-card p,
+    #app[data-phone-mode="true"] .choice-card p,
+    #app[data-phone-mode="true"] .selection-card p,
+    #app[data-phone-mode="true"] .info-card p,
+    #app[data-phone-mode="true"] .result-card p,
+    #app[data-phone-mode="true"] .focus-card .feed-note,
+    #app[data-phone-mode="true"] .live-copy {
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    #app[data-phone-mode="true"] .step-head {
+      gap: 8px;
+      padding: 10px;
+    }
+
+    #app[data-phone-mode="true"] .step-kicker {
+      font-size: 12px;
+    }
+
+    #app[data-phone-mode="true"] .step-head strong {
+      font-size: 16px;
+    }
+
+    #app[data-phone-mode="true"] .step-head p,
+    #app[data-phone-mode="true"] .content[data-view="coach"] .step-head p,
+    #app[data-phone-mode="true"] .content[data-view="sponsor"] .step-head p,
+    #app[data-phone-mode="true"] .content[data-view="round"] .step-head p {
+      font-size: 13px;
+      line-height: 1.45;
+    }
+
+    #app[data-phone-mode="true"] .step-track {
+      display: grid;
+      grid-template-columns: repeat(var(--step-count, 3), minmax(0, 1fr));
+      gap: 6px;
+    }
+
+    #app[data-phone-mode="true"] .step-pill,
+    #app[data-phone-mode="true"] .panel-body[data-view="round"] .step-pill {
+      min-width: 0;
+      max-width: none;
+      padding: 7px 8px;
+      font-size: 12px;
+      line-height: 1.3;
+      white-space: normal;
+      text-overflow: clip;
+    }
+
+    #app[data-phone-mode="true"] .lead-split {
+      grid-template-columns: minmax(0, 1.02fr) minmax(180px, 0.98fr);
+    }
+
+    #app[data-phone-mode="true"] .shop-banner-actions .btn,
+    #app[data-phone-mode="true"] .shop-shelf-card .btn {
+      width: 100%;
+    }
+
+    #app[data-phone-mode="true"] .coach-header {
+      grid-template-columns: 92px minmax(0, 1fr);
+    }
+
+    #app[data-phone-mode="true"] .coach-mini-intro {
+      grid-template-columns: 64px minmax(0, 1fr);
+    }
+
+    #app[data-phone-mode="true"] .coach-mini-intro img {
+      width: 64px;
+      height: 64px;
+    }
+
+    #app[data-phone-mode="true"] .strategy-card,
+    #app[data-phone-mode="true"] .choice-card,
+    #app[data-phone-mode="true"] .info-card,
+    #app[data-phone-mode="true"] .result-card,
+    #app[data-phone-mode="true"] .selection-card {
+      padding: 14px;
+    }
+
+    #app[data-phone-mode="true"] .btn {
+      min-height: 46px;
+      padding: 12px 14px;
+      font-size: 15px;
+    }
+
+    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-layout {
+      grid-template-columns: minmax(0, 1.04fr) minmax(240px, 0.96fr);
+      gap: 10px;
+    }
+
+    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-choice-card,
+    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-side {
+      padding: 12px;
+    }
+
+    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .match-stage-video,
+    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .match-stage-canvas,
+    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .match-stage-poster img {
+      aspect-ratio: 16 / 9;
+    }
+
+    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-action-btn {
+      padding: 12px 10px;
+    }
+
+    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-action-btn strong {
+      font-size: 15px;
+    }
+
+    #app[data-phone-mode="true"] .panel-body[data-view="match-choice"] .live-action-btn span {
+      font-size: 12px;
+      line-height: 1.4;
+    }
+
+    #app[data-phone-mode="true"] .drawer-panel {
+      width: min(480px, 78vw);
+      height: calc(100% - 24px);
+      top: 12px;
+      right: 12px;
+      left: auto;
+      bottom: auto;
+      border-radius: 20px;
+      transform: translateX(calc(100% + 24px));
+    }
+
+    #app[data-phone-mode="true"] .drawer-panel.open {
+      transform: translateX(0);
+    }
+
+    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .metric-value {
+      font-size: 16px;
+    }
+
+    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .hero-title {
+      font-size: 24px;
+    }
+
+    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .hero-subtitle {
+      font-size: 12px;
+    }
+
+    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .step-pill,
+    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .panel-body[data-view="round"] .step-pill {
+      font-size: 12px;
+      padding: 6px 8px;
+    }
+
+    #app[data-phone-mode="true"][data-phone-height-tier="compact"] .btn {
+      min-height: 42px;
+      font-size: 14px;
     }
   </style>
 </head>
@@ -3573,17 +3430,6 @@
           </div>
         </div>
       </aside>
-    </div>
-    <div class="rotate-guard" id="rotateGuard" aria-hidden="true">
-      <div class="rotate-card">
-        <div class="rotate-icon">↻</div>
-        <h2>请横屏体验</h2>
-        <p>手机端已切换为横版操作区，像电脑端一样展示比赛舞台和控制台。为了保证按钮不重叠、内容不裁切、文字不挤成一团，请先把手机横过来。</p>
-        <div class="rotate-hint">
-          <div>横屏后会显示完整主舞台、较大字体和更友好的操作区。</div>
-          <div>桌面端布局不会受到影响。</div>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -4498,16 +4344,36 @@
       return Math.max(min, Math.min(max, value));
     }
 
+    function isPhoneViewport() {
+      return window.matchMedia("(pointer: coarse)").matches && Math.min(window.innerWidth, window.innerHeight) <= 900;
+    }
+
+    function isPhonePortraitViewport() {
+      return isPhoneViewport() && window.innerHeight > window.innerWidth;
+    }
+
     function isMobileViewport() {
-      return window.matchMedia("(max-width: 720px)").matches;
+      return isPhoneViewport();
     }
 
     function isMobilePortraitViewport() {
-      return window.matchMedia("(max-width: 720px) and (orientation: portrait)").matches;
+      return false;
     }
 
     function isMobileLandscapeViewport() {
-      return window.matchMedia("(max-width: 720px) and (orientation: landscape)").matches;
+      return isPhoneViewport();
+    }
+
+    function syncPhoneViewportMode() {
+      const app = $("#app");
+      if (!app) return;
+      const phoneMode = isPhoneViewport();
+      app.dataset.phoneMode = phoneMode ? "true" : "false";
+      app.dataset.phoneOrientation = phoneMode && isPhonePortraitViewport() ? "portrait" : "landscape";
+      const landscapeHeight = phoneMode
+        ? (isPhonePortraitViewport() ? window.innerWidth : window.innerHeight)
+        : window.innerHeight;
+      app.dataset.phoneHeightTier = phoneMode && landscapeHeight < 460 ? "compact" : "normal";
     }
 
     function trackFeedbackEvent(event, metadata = {}) {
@@ -6042,7 +5908,7 @@
       }, { once: true });
       video.addEventListener("playing", markPlaying, { once: true });
 
-      const timeoutMs = isMobileViewport() ? 2400 : 3200;
+      const timeoutMs = isMobileViewport() ? 5000 : 3200;
       window.setTimeout(() => {
         if (!settled && !failed) {
           showFallback("timeout");
@@ -7205,14 +7071,6 @@
       const inner = panelBody?.querySelector(".panel-scale-inner");
       if (!panelBody || !frame || !inner) return;
 
-      if (isMobileViewport()) {
-        panelBody.style.setProperty("--panel-scale", "1");
-        panelBody.dataset.scaleActive = "false";
-        panelBody.dataset.scaleTier = isMobileLandscapeViewport() ? "mobile-landscape" : "mobile-portrait";
-        inner.style.width = "100%";
-        return;
-      }
-
       const measurePanelScale = () => {
         const frameRect = frame.getBoundingClientRect();
         const availableWidth = frameRect.width;
@@ -7228,7 +7086,7 @@
 
       panelBody.style.setProperty("--panel-scale", "1");
       panelBody.dataset.scaleActive = "false";
-      panelBody.dataset.scaleTier = "normal";
+      panelBody.dataset.scaleTier = isMobileViewport() ? "mobile" : "normal";
       inner.style.width = "100%";
 
       let safeScale = measurePanelScale();
