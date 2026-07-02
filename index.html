@@ -259,6 +259,23 @@
       color: #ffb2a6;
     }
 
+    .objective-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 10px;
+    }
+
+    .hero-inline-btn {
+      min-height: 38px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(255, 255, 255, 0.06);
+      color: #fff0c5;
+      cursor: pointer;
+    }
+
     .ticker p + p {
       margin-top: 8px;
       color: var(--muted);
@@ -324,6 +341,10 @@
       transform-origin: top left;
       transform: scale(var(--panel-scale, 1));
       will-change: transform;
+    }
+
+    .mobile-summary-card {
+      display: none;
     }
 
     .content[data-view="intro"] .panel-head small,
@@ -2403,6 +2424,65 @@
       image-rendering: pixelated;
     }
 
+    .video-match-stage[data-video-state="loading"]::before {
+      content: "比赛演出加载中";
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      z-index: 2;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 12px;
+      color: #fff0c4;
+      background: rgba(6, 10, 18, 0.62);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    .match-stage-fallback {
+      display: grid;
+      gap: 8px;
+      align-content: start;
+    }
+
+    .match-stage-note {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      background: rgba(255, 209, 110, 0.08);
+      border: 1px solid rgba(255, 209, 110, 0.18);
+      color: #ffe9b4;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .match-stage-poster {
+      position: relative;
+      overflow: hidden;
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(9, 15, 26, 0.8);
+    }
+
+    .match-stage-poster img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 8.1;
+      object-fit: cover;
+    }
+
+    .match-stage-poster::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, rgba(5, 7, 12, 0.12), rgba(5, 7, 12, 0.36)),
+        radial-gradient(circle at center, transparent 48%, rgba(3, 5, 9, 0.32) 100%);
+      pointer-events: none;
+    }
+
     .live-scoreline {
       display: flex;
       justify-content: space-between;
@@ -2469,6 +2549,30 @@
       overflow: hidden;
       font-size: 13px;
       line-height: 1.45;
+    }
+
+    .live-coach-notes {
+      border-radius: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(255, 255, 255, 0.04);
+      padding: 10px 12px;
+    }
+
+    .live-coach-notes summary {
+      cursor: pointer;
+      list-style: none;
+      color: #fff0c5;
+      font-weight: 700;
+    }
+
+    .live-coach-notes summary::-webkit-details-marker {
+      display: none;
+    }
+
+    .live-coach-notes .bullet-list {
+      margin-top: 10px;
+      font-size: 13px;
+      gap: 6px;
     }
 
     .sticky-actions {
@@ -2883,25 +2987,43 @@
         gap: 10px;
       }
 
+      .scoreboard-top {
+        padding: 10px 12px 8px;
+      }
+
+      .scoreboard-top strong {
+        font-size: 15px;
+      }
+
+      .scoreboard-top span,
+      .small {
+        font-size: 12px;
+      }
+
       .metrics {
         grid-template-columns: repeat(4, minmax(0, 1fr));
       }
 
       .metric {
-        padding: 8px 6px;
+        padding: 10px 6px;
       }
 
       .metric-value {
-        font-size: 18px;
+        font-size: 20px;
+      }
+
+      .metric-label {
+        font-size: 12px;
       }
 
       .main {
         grid-template-columns: 1fr;
-        grid-template-rows: minmax(0, 1fr) clamp(300px, 42dvh, 390px);
+        grid-template-rows: auto minmax(0, 1fr);
       }
 
       .hero-head {
-        padding: 14px 14px 8px;
+        gap: 10px;
+        padding: 14px 14px 10px;
       }
 
       .hero-topline {
@@ -2914,15 +3036,38 @@
       }
 
       .hero-title {
-        font-size: 24px;
+        font-size: 30px;
+        line-height: 1.1;
       }
 
       .hero-subtitle {
-        font-size: 13px;
+        font-size: 15px;
+        line-height: 1.55;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+        overflow: hidden;
       }
 
       .hero-body {
-        padding: 10px 14px 14px;
+        margin-top: 0;
+        padding: 0 14px 14px;
+        align-content: start;
+      }
+
+      .objective,
+      .warning-box {
+        padding: 12px 14px;
+      }
+
+      .objective p,
+      .warning-box p {
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .box-title {
+        font-size: 12px;
       }
 
       .panel-head {
@@ -2931,11 +3076,103 @@
 
       .panel-body {
         padding: 12px;
-        overflow: auto;
+        overflow: hidden;
+      }
+
+      .panel-scale-frame {
+        overflow-y: auto;
+        overflow-x: hidden;
+        -webkit-overflow-scrolling: touch;
+        padding-right: 2px;
+      }
+
+      .panel-scale-inner {
+        transform: none;
+        width: 100% !important;
+        will-change: auto;
+      }
+
+      .view-toggle {
+        min-height: 42px;
+        padding: 9px 13px;
+        font-size: 13px;
+      }
+
+      .lead-card h3,
+      .live-title {
+        font-size: 26px;
+        line-height: 1.18;
+      }
+
+      .lead-card p,
+      .choice-card p,
+      .selection-card p,
+      .info-card p,
+      .result-card p,
+      .focus-card .feed-note,
+      .live-copy {
+        font-size: 15px;
+        line-height: 1.55;
+      }
+
+      .lead-side strong,
+      .content[data-view="sponsor"] .lead-side strong,
+      .content[data-view="coach"] .lead-side strong,
+      .content[data-view="round"] .lead-side strong {
+        font-size: 16px;
+      }
+
+      .lead-side .bullet-list,
+      .content[data-view="sponsor"] .lead-side .bullet-list,
+      .content[data-view="coach"] .lead-side .bullet-list,
+      .content[data-view="round"] .lead-side .bullet-list {
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .step-head {
+        gap: 8px;
+        padding: 12px;
+      }
+
+      .step-kicker {
+        font-size: 12px;
+      }
+
+      .step-head strong {
+        font-size: 18px;
+      }
+
+      .step-head p,
+      .content[data-view="coach"] .step-head p,
+      .content[data-view="sponsor"] .step-head p,
+      .content[data-view="round"] .step-head p {
+        font-size: 14px;
+        line-height: 1.5;
       }
 
       .step-track {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+      }
+
+      .step-track::-webkit-scrollbar {
+        display: none;
+      }
+
+      .step-pill,
+      .panel-body[data-view="round"] .step-pill {
+        flex: 0 0 auto;
+        min-width: 120px;
+        max-width: 160px;
+        padding: 10px 12px;
+        font-size: 13px;
+        line-height: 1.35;
+        white-space: normal;
       }
 
       .two-col,
@@ -2974,9 +3211,13 @@
         grid-template-columns: 1fr;
       }
 
-      .lead-card h3,
-      .live-title {
-        font-size: 22px;
+      .coach-mini-intro {
+        grid-template-columns: 72px minmax(0, 1fr);
+      }
+
+      .coach-mini-intro img {
+        width: 72px;
+        height: 72px;
       }
 
       .sticky-actions {
@@ -2991,12 +3232,13 @@
       .info-card,
       .result-card,
       .selection-card {
-        padding: 14px;
+        padding: 16px;
       }
 
       .btn {
         min-height: 50px;
         padding: 13px 16px;
+        font-size: 16px;
       }
 
       .card-actions {
@@ -3013,6 +3255,48 @@
 
       .ending-copy p {
         -webkit-line-clamp: 3;
+      }
+
+      .panel-body[data-view="match-choice"] .live-layout {
+        gap: 12px;
+      }
+
+      .panel-body[data-view="match-choice"] .live-main,
+      .panel-body[data-view="match-choice"] .live-side {
+        display: grid;
+        gap: 12px;
+      }
+
+      .panel-body[data-view="match-choice"] .live-choice-card,
+      .panel-body[data-view="match-choice"] .live-side {
+        padding: 14px;
+      }
+
+      .panel-body[data-view="match-choice"] .live-minute {
+        font-size: 13px;
+      }
+
+      .panel-body[data-view="match-choice"] .match-stage-video,
+      .panel-body[data-view="match-choice"] .match-stage-canvas,
+      .panel-body[data-view="match-choice"] .match-stage-poster img {
+        aspect-ratio: 16 / 9;
+      }
+
+      .panel-body[data-view="match-choice"] .live-action-list {
+        gap: 10px;
+      }
+
+      .panel-body[data-view="match-choice"] .live-action-btn {
+        padding: 14px 12px;
+      }
+
+      .panel-body[data-view="match-choice"] .live-action-btn strong {
+        font-size: 16px;
+      }
+
+      .panel-body[data-view="match-choice"] .live-action-btn span {
+        font-size: 13px;
+        line-height: 1.5;
       }
 
       .drawer-panel {
@@ -3171,11 +3455,11 @@
       propUsb: "./assets/props/prop_overseas_usb.jpg",
       propNote: "./assets/props/prop_penalty_note.jpg",
       portraitCoach: "./assets/portraits/portrait_coach.jpg",
-      videoScramble: "./视频/中国队与某个国家队比赛，禁区内多人抢点混战，前锋与后卫空中争顶，门将出击扑救，足球落地弹起在人堆中穿行，镜头紧贴门前混战.mp4",
-      videoFinish: "./视频/中国队前锋单刀带球进入禁区，门将出击封堵，前锋低射.mp4",
-      videoCounter: "./视频/中场拼抢后中国队断球成功，持球人立即向前推进，队友前插，对方后卫回追。镜头跟随反击路线。.mp4",
-      videoDribble: "./视频/夜间球场，电视转播镜头。中国队前锋带球推进，足球始终在脚下滚动，两名防守球员上抢拦截。.mp4",
-      videoRescue: "./视频/对方前锋带球突入禁区，中国队后卫从侧后方滑铲解围，足球贴地滚向边线。镜头跟随进攻球员后快速切到解围动作。.mp4"
+      videoScramble: "./视频/corner_scramble.mp4",
+      videoFinish: "./视频/solo_finish.mp4",
+      videoCounter: "./视频/counter_attack.mp4",
+      videoDribble: "./视频/dribble_carry.mp4",
+      videoRescue: "./视频/rescue_tackle.mp4"
     };
 
     const MATCH_VIDEO_LIBRARY = {
@@ -4024,6 +4308,10 @@
       return Math.max(min, Math.min(max, value));
     }
 
+    function isMobileViewport() {
+      return window.matchMedia("(max-width: 720px)").matches;
+    }
+
     function trackFeedbackEvent(event, metadata = {}) {
       try {
         window.Feedback?.trackEvent({ event, metadata });
@@ -4814,6 +5102,32 @@
       };
     }
 
+    function getMobileHeroSubtitle(meta) {
+      if (state.phase === "intro" || state.phase === "coach" || state.phase === "sponsor") {
+        return "世界杯激战正酣，电话却先打到了你这里。先把第一步决定做完，别让锅还没接稳就先掉地上。";
+      }
+      if (state.phase === "qualifiers") {
+        return "预选赛先看目标，再看对手，别把命交给计算器和最后一轮的别人。";
+      }
+      if (state.phase === "worldcup") {
+        return state.view === "wc-draw"
+          ? "签位已经落地，先判断出线线，再准备第一场。"
+          : "世界杯已经开始，这一页只保留你现在最该关心的信息。";
+      }
+      if (state.phase === "knockout") {
+        return "淘汰赛没有回头路，先处理眼前这一战，其他都往后放。";
+      }
+      return meta.subtitle;
+    }
+
+    function getMatchStagePoster(scene) {
+      if (scene === "corner") return ASSETS.match;
+      if (scene === "counter") return ASSETS.worldCupGroup;
+      if (scene === "dribble") return ASSETS.match;
+      if (scene === "rescue") return ASSETS.knockoutR32;
+      return ASSETS.match;
+    }
+
     function renderMetrics() {
       const metrics = [
         ["积分", state.resources?.points ?? 0, "决定排名，赢 3 分平 1 分。"],
@@ -4859,13 +5173,19 @@
       $("#progressLabel").textContent = progressText;
       $("#heroChip").textContent = meta.chip;
       $("#heroTitle").textContent = meta.title;
-      $("#heroSubtitle").textContent = meta.subtitle;
+      $("#heroSubtitle").textContent = isMobileViewport() ? getMobileHeroSubtitle(meta) : meta.subtitle;
 
       const objective = getRoundObjective();
       $("#objectiveBox").innerHTML = `
         <div class="box-title">当前目标</div>
         <p><strong>${objective.title}</strong></p>
         <p style="margin-top:8px;">${objective.text}</p>
+        ${isMobileViewport() ? `
+          <div class="objective-actions">
+            <button class="hero-inline-btn" data-action="open-drawer" data-tab="guide">查看说明</button>
+            <button class="hero-inline-btn" data-action="open-drawer" data-tab="news">看风向</button>
+          </div>
+        ` : ""}
       `;
 
       const warnings = getWarnings();
@@ -5035,6 +5355,28 @@
     }
 
     function renderIntro() {
+      if (isMobileViewport()) {
+        return `
+          <div class="lead-card result-card">
+            <div class="lead-kicker">世界杯转播夜 / 上任电话</div>
+            <h3>世界杯打得正热，电话却先狠狠干到了你这里。</h3>
+            <div class="info-card compact-card">
+              <p>你正看着别人踢世界杯，手机突然响了。对面通知你接任中国男足主教练，目标是 ${state.currentYear} 世界杯。你问为什么是你，对面说得很坦然：因为前面已经有 167 个人拒绝了。</p>
+            </div>
+            <div class="lead-side">
+              <strong>你现在最需要知道的：</strong>
+              <div class="bullet-list">
+                <div>先定主教练风格，再定赞助路线</div>
+                <div>这支队伍还没开踢，外界已经准备好先骂再看</div>
+                <div>你的第一步不是赢球，是别把第一步走乱</div>
+              </div>
+            </div>
+            <div class="sticky-actions">
+              <button class="btn" data-action="start">接锅上任</button>
+            </div>
+          </div>
+        `;
+      }
       return `
         <div class="lead-card result-card">
           <div class="lead-kicker">世界杯转播夜 / 上任电话</div>
@@ -5440,11 +5782,79 @@
             muted
             loop
             playsinline
-            preload="auto"
+            webkit-playsinline
+            x5-playsinline
+            x5-video-player-type="h5"
+            x5-video-player-fullscreen="false"
+            disablepictureinpicture
+            preload="metadata"
+            poster="${getMatchStagePoster(meta.scene)}"
+            data-role="match-video"
+            data-scene="${meta.scene}"
             aria-label="比赛演出视频"
           ></video>
+          <div class="match-stage-fallback" data-role="video-fallback" hidden>
+            <div class="match-stage-note">当前网络或浏览器限制了视频自动播放，已切换为兜底演出。</div>
+            <div class="match-stage-poster">
+              <img src="${getMatchStagePoster(meta.scene)}" alt="比赛演出备用画面">
+            </div>
+            <canvas id="matchCanvasStage" class="match-stage-canvas" aria-label="比赛演出画面"></canvas>
+          </div>
         </div>
       `;
+    }
+
+    function activateMatchVideoStage() {
+      const stage = $(".video-match-stage");
+      if (!stage) return;
+      const video = stage.querySelector("[data-role='match-video']");
+      const fallback = stage.querySelector("[data-role='video-fallback']");
+      if (!video || !fallback) return;
+
+      let settled = false;
+      let failed = false;
+      stage.dataset.videoState = "loading";
+
+      const showFallback = (reason) => {
+        if (failed) return;
+        failed = true;
+        stage.dataset.videoState = "fallback";
+        video.pause();
+        video.hidden = true;
+        fallback.hidden = false;
+        fallback.dataset.reason = reason;
+        syncMatchCanvasPrototype();
+      };
+
+      const markPlaying = () => {
+        if (failed) return;
+        settled = true;
+        stage.dataset.videoState = "playing";
+        fallback.hidden = true;
+      };
+
+      const failEvents = ["error", "stalled", "abort", "suspend"];
+      failEvents.forEach((eventName) => {
+        video.addEventListener(eventName, () => showFallback(eventName), { once: true });
+      });
+      video.addEventListener("canplay", () => {
+        if (!failed) {
+          stage.dataset.videoState = "ready";
+        }
+      }, { once: true });
+      video.addEventListener("playing", markPlaying, { once: true });
+
+      const timeoutMs = isMobileViewport() ? 2400 : 3200;
+      window.setTimeout(() => {
+        if (!settled && !failed) {
+          showFallback("timeout");
+        }
+      }, timeoutMs);
+
+      const playPromise = video.play?.();
+      if (playPromise && typeof playPromise.catch === "function") {
+        playPromise.catch(() => showFallback("play"));
+      }
     }
 
     function getMatchSceneDuration(scene) {
@@ -6402,6 +6812,39 @@
           </div>
         `;
       }
+      if (isMobileViewport()) {
+        return `
+          <div class="live-layout">
+            <div class="live-main">
+              ${renderCanvasMatchStage(step)}
+              <div class="choice-card live-choice-card">
+                <div class="live-meta-row">
+                  <span class="tag">比赛进行中</span>
+                  <span class="live-minute">临场决策 ${state.matchFlow.step + 1} / ${state.matchFlow.prompts.length}</span>
+                </div>
+                <h3 class="live-title">${step.title}</h3>
+                <p class="live-copy">${step.text}</p>
+              </div>
+            </div>
+            <div class="live-side">
+              <div class="live-action-list">
+                ${step.options.map((option, index) => `
+                  <button class="live-action-btn ${index === 1 ? "secondary" : ""}" data-action="match-choice" data-index="${index}">
+                    <strong>${option.label}</strong>
+                    <span>${option.desc}</span>
+                  </button>
+                `).join("")}
+              </div>
+              <details class="live-coach-notes">
+                <summary>展开教练席耳机里的声音</summary>
+                <div class="bullet-list">
+                  ${step.options.map((option) => `<div><strong>${option.label}</strong>：${option.desc}</div>`).join("")}
+                </div>
+              </details>
+            </div>
+          </div>
+        `;
+      }
       return `
         <div class="live-layout">
           <div class="live-main">
@@ -6564,6 +7007,14 @@
       const inner = panelBody?.querySelector(".panel-scale-inner");
       if (!panelBody || !frame || !inner) return;
 
+      if (isMobileViewport()) {
+        panelBody.style.setProperty("--panel-scale", "1");
+        panelBody.dataset.scaleActive = "false";
+        panelBody.dataset.scaleTier = "mobile";
+        inner.style.width = "100%";
+        return;
+      }
+
       const measurePanelScale = () => {
         const frameRect = frame.getBoundingClientRect();
         const availableWidth = frameRect.width;
@@ -6681,6 +7132,7 @@
       renderPanel();
       renderDrawer();
       syncMatchCanvasPrototype();
+      activateMatchVideoStage();
     }
 
     function pickStrategy(id) {

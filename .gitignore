@@ -16,3 +16,5 @@ Thumbs.db
 .claude/
 
 # 其他项目文件
+
+.vercel
