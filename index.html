@@ -3006,76 +3006,116 @@
 
       .metric {
         padding: 10px 6px;
+        min-width: 0;
       }
 
       .metric-value {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       .metric-label {
-        font-size: 12px;
+        font-size: 11px;
       }
 
       .main {
-        grid-template-columns: 1fr;
-        grid-template-rows: auto minmax(0, 1fr);
-      }
-
-      .hero-head {
-        gap: 10px;
-        padding: 14px 14px 10px;
-      }
-
-      .hero-topline {
-        flex-direction: column;
+        grid-template-columns: minmax(132px, 0.92fr) minmax(0, 1.48fr);
+        grid-template-rows: minmax(0, 1fr);
         align-items: stretch;
       }
 
+      .hero,
+      .content {
+        min-width: 0;
+      }
+
+      .hero {
+        overflow: hidden;
+      }
+
+      .hero-head {
+        gap: 8px;
+        padding: 12px 12px 8px;
+      }
+
+      .hero-topline {
+        display: grid;
+        gap: 8px;
+        align-items: stretch;
+      }
+
+      .phase-chip {
+        min-height: 38px;
+        padding: 8px 10px;
+        font-size: 12px;
+      }
+
       .hero-tools {
-        justify-content: flex-start;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 8px;
+        justify-content: stretch;
       }
 
       .hero-title {
-        font-size: 30px;
-        line-height: 1.1;
+        font-size: 26px;
+        line-height: 1.12;
       }
 
       .hero-subtitle {
-        font-size: 15px;
-        line-height: 1.55;
+        font-size: 14px;
+        line-height: 1.5;
         display: -webkit-box;
         -webkit-box-orient: vertical;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 5;
         overflow: hidden;
       }
 
       .hero-body {
         margin-top: 0;
-        padding: 0 14px 14px;
+        padding: 0 12px 12px;
+        overflow-y: auto;
+        overflow-x: hidden;
+        min-height: 0;
         align-content: start;
+        -webkit-overflow-scrolling: touch;
       }
 
       .objective,
       .warning-box {
-        padding: 12px 14px;
+        padding: 12px;
       }
 
       .objective p,
       .warning-box p {
         font-size: 14px;
-        line-height: 1.55;
+        line-height: 1.5;
       }
 
       .box-title {
         font-size: 12px;
       }
 
+      .objective-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .hero-inline-btn,
+      .view-toggle {
+        width: 100%;
+        min-width: 0;
+        min-height: 40px;
+        padding: 8px 10px;
+        font-size: 13px;
+      }
+
       .panel-head {
-        padding: 12px 14px;
+        display: none;
       }
 
       .panel-body {
-        padding: 12px;
+        padding: 10px;
         overflow: hidden;
       }
 
@@ -3083,7 +3123,7 @@
         overflow-y: auto;
         overflow-x: hidden;
         -webkit-overflow-scrolling: touch;
-        padding-right: 2px;
+        padding-right: 1px;
       }
 
       .panel-scale-inner {
@@ -3092,15 +3132,9 @@
         will-change: auto;
       }
 
-      .view-toggle {
-        min-height: 42px;
-        padding: 9px 13px;
-        font-size: 13px;
-      }
-
       .lead-card h3,
       .live-title {
-        font-size: 26px;
+        font-size: 22px;
         line-height: 1.18;
       }
 
@@ -3111,28 +3145,28 @@
       .result-card p,
       .focus-card .feed-note,
       .live-copy {
-        font-size: 15px;
-        line-height: 1.55;
+        font-size: 14px;
+        line-height: 1.5;
       }
 
       .lead-side strong,
       .content[data-view="sponsor"] .lead-side strong,
       .content[data-view="coach"] .lead-side strong,
       .content[data-view="round"] .lead-side strong {
-        font-size: 16px;
+        font-size: 15px;
       }
 
       .lead-side .bullet-list,
       .content[data-view="sponsor"] .lead-side .bullet-list,
       .content[data-view="coach"] .lead-side .bullet-list,
       .content[data-view="round"] .lead-side .bullet-list {
-        font-size: 14px;
-        line-height: 1.5;
+        font-size: 13px;
+        line-height: 1.45;
       }
 
       .step-head {
         gap: 8px;
-        padding: 12px;
+        padding: 10px;
       }
 
       .step-kicker {
@@ -3140,39 +3174,32 @@
       }
 
       .step-head strong {
-        font-size: 18px;
+        font-size: 16px;
       }
 
       .step-head p,
       .content[data-view="coach"] .step-head p,
       .content[data-view="sponsor"] .step-head p,
       .content[data-view="round"] .step-head p {
-        font-size: 14px;
-        line-height: 1.5;
+        font-size: 13px;
+        line-height: 1.45;
       }
 
       .step-track {
-        display: flex;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 8px;
-        overflow-x: auto;
-        overflow-y: hidden;
-        padding-bottom: 2px;
-        scrollbar-width: none;
-      }
-
-      .step-track::-webkit-scrollbar {
-        display: none;
       }
 
       .step-pill,
       .panel-body[data-view="round"] .step-pill {
-        flex: 0 0 auto;
-        min-width: 120px;
-        max-width: 160px;
+        min-width: 0;
+        max-width: none;
         padding: 10px 12px;
         font-size: 13px;
         line-height: 1.35;
         white-space: normal;
+        text-overflow: clip;
       }
 
       .two-col,
@@ -3232,7 +3259,7 @@
       .info-card,
       .result-card,
       .selection-card {
-        padding: 16px;
+        padding: 14px;
       }
 
       .btn {
@@ -3279,7 +3306,7 @@
       .panel-body[data-view="match-choice"] .match-stage-video,
       .panel-body[data-view="match-choice"] .match-stage-canvas,
       .panel-body[data-view="match-choice"] .match-stage-poster img {
-        aspect-ratio: 16 / 9;
+        aspect-ratio: 16 / 8.8;
       }
 
       .panel-body[data-view="match-choice"] .live-action-list {
@@ -3312,6 +3339,54 @@
 
       .drawer-panel.open {
         transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 420px) {
+      .main {
+        grid-template-columns: minmax(126px, 0.9fr) minmax(0, 1.5fr);
+        gap: 9px;
+      }
+
+      .hero-title {
+        font-size: 24px;
+      }
+
+      .hero-subtitle {
+        font-size: 13px;
+      }
+
+      .objective p,
+      .warning-box p {
+        font-size: 13px;
+      }
+
+      .metric-value {
+        font-size: 17px;
+      }
+
+      .metric-label {
+        font-size: 10px;
+      }
+
+      .lead-card h3,
+      .live-title {
+        font-size: 21px;
+      }
+
+      .step-head strong {
+        font-size: 15px;
+      }
+
+      .step-pill,
+      .panel-body[data-view="round"] .step-pill {
+        font-size: 12px;
+        padding: 9px 10px;
+      }
+
+      .btn {
+        min-height: 48px;
+        font-size: 15px;
       }
     }
   </style>
